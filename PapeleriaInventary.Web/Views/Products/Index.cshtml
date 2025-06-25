@@ -1,0 +1,59 @@
+﻿@model IEnumerable<PapeleriaInventary.Domain.Entities.Product>
+
+@{
+    // Establece el título de la página
+    ViewData["Title"] = "Products";
+}
+
+<h1>Productos</h1>
+
+<!-- Formulario de búsqueda y filtrado -->
+<form method="get" asp-action="Index">
+    <div>
+        <!-- Campo para buscar por nombre -->
+        <input type="text" name="search" placeholder="Buscar por nombre" />
+        <!-- Campo para filtrar por categoría -->
+        <input type="text" name="category" placeholder="Filtrar por categoría" />
+        <button type="submit">Buscar</button>
+    </div>
+</form>
+
+<p>
+    <!-- Enlace para crear un nuevo producto -->
+    <a asp-action="Create">Crear nuevo producto</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @* Itera sobre la lista de productos y muestra cada uno en una fila *@
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Category</td>
+                <td>@item.Price.ToString("C")</td>
+                <td>@item.Stock</td>
+                <td>
+                    <!-- Enlaces para editar o eliminar el producto -->
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                </td>
+            </tr>
+        }
+        <form method="get" asp-action="ExportToExcel">
+            <input type="hidden" name="search" value="@Context.Request.Query["search"]" />
+            <input type="hidden" name="category" value="@Context.Request.Query["category"]" />
+            <button type="submit">Exportar a Excel</button>
+        </form>
+
+    </tbody>
+</table>

@@ -1,0 +1,45 @@
+﻿@model PapeleriaInventary.Domain.Entities.Product // Indica que el modelo de la vista es Product
+
+@{
+    ViewData["Title"] = "Crear Producto"; // Establece el título de la página
+}
+
+<h1>Crear Producto</h1> @* // Encabezado principal de la página *@
+
+<form asp-action="Create" method="post">
+    @* // Inicia un formulario que enviará datos al método Create por POST *@
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div> @* // Muestra los errores de validación del modelo *@
+
+    <div>
+        <label asp-for="Name"></label> @* // Etiqueta para el campo Name *@
+        <input asp-for="Name" class="form-control" /> @* // Campo de entrada para Name *@
+        <span asp-validation-for="Name" class="text-danger"></span> @* // Muestra errores de validación para Name *@
+    </div>
+
+    <div>
+        <label asp-for="Category"></label> @* // Etiqueta para el campo Category *@
+        <input asp-for="Category" class="form-control" /> @* // Campo de entrada para Category *@
+        <span asp-validation-for="Category" class="text-danger"></span> @* // Muestra errores de validación para Category *@
+    </div>
+
+    <div>
+        <label asp-for="Price"></label> @* // Etiqueta para el campo Price *@
+        <input asp-for="Price" class="form-control" /> @* // Campo de entrada para Price *@
+        <span asp-validation-for="Price" class="text-danger"></span> @* // Muestra errores de validación para Price *@
+    </div>
+
+    <div>
+        <label asp-for="Stock"></label> @* // Etiqueta para el campo Stock *@
+        <input asp-for="Stock" class="form-control" /> @* // Campo de entrada para Stock *@
+        <span asp-validation-for="Stock" class="text-danger"></span> @* // Muestra errores de validación para Stock *@
+    </div>
+
+    <button type="submit">Guardar</button> | @* // Botón para enviar el formulario *@
+    <a asp-action="Index">Volver</a> @* // Enlace para volver al índice de productos *@
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial"); // Incluye scripts de validación del lado del cliente
+    }
+}

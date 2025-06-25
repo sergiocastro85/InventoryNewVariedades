@@ -1,0 +1,36 @@
+﻿@model PapeleriaInventary.Domain.Entities.Product
+
+@{
+    ViewData["Title"] = "Eliminar Producto";
+}
+
+<!-- Título de la página -->
+<h1>Eliminar Producto</h1>
+
+<!-- Mensaje de confirmación para eliminar -->
+<h3>¿Estás seguro que deseas eliminar este producto?</h3>
+
+<div>
+    <h4>Producto</h4>
+    <!-- Detalles del producto a eliminar -->
+    <dl class="row">
+        <dt class="col-sm-2">Nombre</dt>
+        <dd class="col-sm-10">@Model.Name</dd>
+
+        <dt class="col-sm-2">Categoría</dt>
+        <dd class="col-sm-10">@Model.Category</dd>
+
+        <dt class="col-sm-2">Precio</dt>
+        <dd class="col-sm-10">@Model.Price</dd>
+
+        <dt class="col-sm-2">Stock</dt>
+        <dd class="col-sm-10">@Model.Stock</dd>
+    </dl>
+
+    <!-- Formulario para confirmar la eliminación del producto -->
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit">Eliminar</button> |
+        <a asp-action="Index">Cancelar</a>
+    </form>
+</div>

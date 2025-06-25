@@ -1,0 +1,56 @@
+﻿@model PapeleriaInventary.Domain.Entities.Product
+
+@{
+    // Título de la página
+    ViewData["Title"] = "Editar Producto";
+}
+
+<h1>Editar Producto</h1>
+
+<!-- Formulario para editar un producto existente -->
+<form asp-action="Edit" method="post">
+    <!-- Campo oculto para el Id del producto -->
+    <input type="hidden" asp-for="Id" />
+
+    <!-- Muestra los errores de validación del modelo -->
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div>
+        <!-- Campo para el nombre del producto -->
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div>
+        <!-- Campo para la categoría del producto -->
+        <label asp-for="Category"></label>
+        <input asp-for="Category" class="form-control" />
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+
+    <div>
+        <!-- Campo para el precio del producto -->
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div>
+        <!-- Campo para el stock del producto -->
+        <label asp-for="Stock"></label>
+        <input asp-for="Stock" class="form-control" />
+        <span asp-validation-for="Stock" class="text-danger"></span>
+    </div>
+
+    <!-- Botón para guardar los cambios y enlace para cancelar -->
+    <button type="submit">Guardar cambios</button> |
+    <a asp-action="Index">Cancelar</a>
+</form>
+
+@section Scripts {
+    @{
+        // Incluye los scripts de validación de formularios
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
