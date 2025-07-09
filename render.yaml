@@ -5,5 +5,5 @@ services:
     branch: master
     dockerfilePath: ./Dockerfile
     envVars:
-      - key: ConnectionStrings__DefaultConnection
+      - key: ConnectionStrings_DefaultConnection
         sync: false
