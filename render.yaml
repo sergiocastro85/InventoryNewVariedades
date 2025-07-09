@@ -1,12 +1,9 @@
 services:
   - type: web
     name: InventoryNewVariedades
-    runtime: dotnet
+    env: docker
     branch: master
-    buildCommand: dotnet build PapeleriaInventary.Web/PapeleriaInventary.Web.csproj
-    startCommand: dotnet PapeleriaInventary.Web.dll
-    workingDir: PapeleriaInventary.Web
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: ConnectionStrings__DefaultConnection
         sync: false
-
