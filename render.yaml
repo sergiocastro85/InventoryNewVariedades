@@ -1,8 +1,7 @@
 services:
   - type: web
-    name: papeleria-inventario
+    name: InventoryNewVariedades
     runtime: dotnet
-    repo: https://github.com/sergiocastro85/InventoryNewVariedades
     branch: master
     buildCommand: dotnet build PapeleriaInventary.Web/PapeleriaInventary.Web.csproj
     startCommand: dotnet PapeleriaInventary.Web.dll
